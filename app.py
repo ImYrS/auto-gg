@@ -144,10 +144,10 @@ class AutoGG:
             expect(
                 page.get_by_role(
                     "heading",
-                    name=re.compile(r"The SIM[s]? you ordered is on*", re.IGNORECASE),
+                    name=re.compile(r"The SIM[s]? you ordered (?:is|are) on*", re.IGNORECASE),
                 )
             ).to_be_visible()
-            logging.info(f">> {self.config.sims_in_single_order} SIMs ordered successfully")
+            logging.info(f">> {self.config.sims_in_single_order} SIM(s) ordered successfully")
             return True
         except AssertionError as e:
             logging.error(f">> Failed to order or confirm order: {e}")
